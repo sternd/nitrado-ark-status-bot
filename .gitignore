@@ -1,2 +1,3 @@
 .idea
-package/*
+*.zip
+*.log
