@@ -13,9 +13,21 @@ export PYTHONPATH
 ```
 
 ## Usage
+Make sure to uncomment the last line in bot.py to run locally.
 
 ```bash
 python3 bot.py
+```
+
+## Lambda Deployment
+
+```bash
+cd project_root
+cd ./package
+zip -r9 ${OLDPWD}/nitrado-ark-status-bot.zip .
+cd ..
+zip -g nitrado-ark-status-bot.zip bot.py
+aws lambda update-function-code --function-name nitrado-ark-status-bot --zip-file fileb://nitrado-ark-status-bot.zip
 ```
 
 ## Contributing
