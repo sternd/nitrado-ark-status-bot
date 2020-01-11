@@ -7,7 +7,7 @@ A simple Discord bot that retrieves the server status for Nitrado gameservers an
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.txt
 
 ```bash
-pip install --target ./package -r requirements.txt
+pip3 install --target ./package -r requirements.txt
 PYTHONPATH="PATH_TO_PACKAGE_FOLDER:$PYTHONPATH"
 export PYTHONPATH
 ```
