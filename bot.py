@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import requests
 from requests.exceptions import HTTPError, Timeout
 import json
+from datetime import datetime
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -50,6 +51,8 @@ def handler(event, context):
 
         for gameserver_output in output_array:
             formatted_status_message += gameserver_output + '\n'
+
+        formatted_status_message += 'Last Updated: ' + datetime.utcnow().strftime("%H:%M:%S") + ' UTC'
 
         if status_message == None:
             await channel.send(formatted_status_message)
