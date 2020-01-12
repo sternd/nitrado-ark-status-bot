@@ -21,8 +21,11 @@ With:
 self.loop = asyncio.new_event_loop()
 ```
 
-Create copy of nitrapi_account_config_template.json as nitrapi_account_config.json.
+Create copy of "nitrapi_account_config_template.json" as "nitrapi_account_config.json".
 Then add the auth_tokens for each of the Nitrado accounts into the config.
+
+Create a copy of ".env_template" as ".env".
+Add the values for: DISCORD_TOKEN, DISCORD_GUILD, and DISCORD_CHANNEL
 
 ## Usage
 Make sure to uncomment the last line in bot.py to run locally.
