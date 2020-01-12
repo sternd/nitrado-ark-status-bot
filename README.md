@@ -11,6 +11,18 @@ pip3 install --target ./package -r requirements.txt
 PYTHONPATH="PATH_TO_PACKAGE_FOLDER:$PYTHONPATH"
 export PYTHONPATH
 ```
+Replace line #165 of package/discord/client.py:
+
+```python
+self.loop = asyncio.get_event_loop() if loop is None else loop
+```
+With:
+```python
+self.loop = asyncio.new_event_loop()
+```
+
+Create copy of nitrapi_account_config_template.json as nitrapi_account_config.json.
+Then add the auth_tokens for each of the Nitrado accounts into the config.
 
 ## Usage
 Make sure to uncomment the last line in bot.py to run locally.
@@ -27,8 +39,12 @@ cd ./package
 zip -r9 ${OLDPWD}/nitrado-ark-status-bot.zip .
 cd ..
 zip -g nitrado-ark-status-bot.zip bot.py
+zip -g nitrado-ark-status-bot.zip nitrapi_account_config.json
 aws lambda update-function-code --function-name nitrado-ark-status-bot --zip-file fileb://nitrado-ark-status-bot.zip
 ```
+
+## Known Issues
+1. Player counts are not always returned by NitrAPI
 
 ## Contributing
 Pull requests are welcome to the "develop" branch. For major changes, please open an issue first to discuss what you would like to change.
