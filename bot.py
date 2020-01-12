@@ -138,4 +138,4 @@ def handler(event, context):
     }
 
 # UNCOMMENT TO RUN LOCALLY
-handler(None, None)
+#handler(None, None)
