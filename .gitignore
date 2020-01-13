@@ -3,3 +3,4 @@
 *.log
 nitrapi_account_config.json
 .env
+*.pyc
