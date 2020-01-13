@@ -54,7 +54,7 @@ def handler(event, context):
 
                 status = parseGameserverStatus(gameserver_details)
 
-                if availability_status == 'down':
+                if availability_status == 'down' or availability_status == 'restarting':
                     availability_status = availability_status
                 elif status != 'started' and status != 'restarting':
                     availability_status = 'down'
@@ -65,9 +65,11 @@ def handler(event, context):
 
             if availability_status == 'available':
                 colour = discord.Colour(0x7ed321)
-            if availability_status == 'restarting':
+            elif availability_status == 'restarting':
                 colour = discord.Colour(0xf5a623)
-            if availability_status == 'down':
+            elif availability_status == 'down':
+                colour = discord.Color(0xD0021B)
+            else:
                 colour = discord.Color(0xD0021B)
 
         embed.__setattr__('timestamp', datetime.utcnow())
