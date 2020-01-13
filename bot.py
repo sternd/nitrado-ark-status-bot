@@ -41,10 +41,10 @@ def handler(event, context):
         embed.set_footer(text="Updated",
                          icon_url="https://cdn.discordapp.com/icons/626094990984216586/ceb7d3a814435bc9601276d07f44b9f3.png?size=128")
 
+        availability_status = 'available'
+
         for account in nitrapi_config["nitrado_accounts"]:
             auth_token = account["auth_token"]
-
-            availability_status = 'available'
 
             for gameserver in account["gameservers"]:
                 if gameserver["enabled"] != True:
@@ -63,14 +63,14 @@ def handler(event, context):
 
                 embed = addRichEmbedField(embed, gameserver["gameserver_name"], status, gameserver_details)
 
-            if availability_status == 'available':
-                colour = discord.Colour(0x7ed321)
-            elif availability_status == 'restarting':
-                colour = discord.Colour(0xf5a623)
-            elif availability_status == 'down':
-                colour = discord.Color(0xD0021B)
-            else:
-                colour = discord.Color(0xD0021B)
+        if availability_status == 'available':
+            colour = discord.Colour(0x7ed321)
+        elif availability_status == 'restarting':
+            colour = discord.Colour(0xf5a623)
+        elif availability_status == 'down':
+            colour = discord.Color(0xD0021B)
+        else:
+            colour = discord.Color(0xD0021B)
 
         embed.__setattr__('timestamp', datetime.utcnow())
         embed.__setattr__('colour', colour)
