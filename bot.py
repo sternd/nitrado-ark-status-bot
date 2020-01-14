@@ -47,7 +47,6 @@ class DiscordHelper:
 
         auth_token = f'Bot {self.TOKEN}'
 
-        print(url)
         json_body = None
 
         if params is not None and params:
