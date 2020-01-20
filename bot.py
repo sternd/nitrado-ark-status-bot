@@ -128,10 +128,13 @@ def handler(event, context):
     embed = discord.Embed(title="Valkyrie Server Status", colour=discord.Colour(0xf8e71c),
                           url="https://github.com/sternd/nitrado-ark-status-bot",
                           description="A visualization of the availability status for Valkyrie's Ark Nitrado servers. The status of all servers will be updated every minute.")
+
+    server_icon = os.getenv('SERVER_ICON')
+
     embed.set_thumbnail(
-        url="https://cdn.discordapp.com/icons/626094990984216586/ceb7d3a814435bc9601276d07f44b9f3.png?size=128")
+        url=server_icon)
     embed.set_footer(text="Updated",
-                     icon_url="https://cdn.discordapp.com/icons/626094990984216586/ceb7d3a814435bc9601276d07f44b9f3.png?size=128")
+                     icon_url=server_icon)
 
     availability_status = 'available'
 
