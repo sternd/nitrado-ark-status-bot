@@ -54,11 +54,11 @@ class DiscordHelper:
 
         try:
             if action == 'GET':
-                response = requests.get(url, timeout=5, headers={"Authorization": auth_token})
+                response = requests.get(url, timeout=10, headers={"Authorization": auth_token})
             elif action == 'POST':
-                response = requests.post(url, timeout=5, headers={"Authorization": auth_token}, json=json_body)
+                response = requests.post(url, timeout=6, headers={"Authorization": auth_token}, json=json_body)
             elif action == 'PATCH':
-                response = requests.patch(url, timeout=5, headers={"Authorization": auth_token}, json=json_body)
+                response = requests.patch(url, timeout=6, headers={"Authorization": auth_token}, json=json_body)
             else:
                 raise Exception(f'Attempting to send request with unknown action: {action}')
 
