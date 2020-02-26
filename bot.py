@@ -156,7 +156,7 @@ def handler(event, context):
             elif status == 'restarting':
                 availability_status = 'restarting'
 
-            embed = addRichEmbedField(embed, gameserver["gameserver_name"], status, gameserver_details)
+            embed = addRichEmbedField(embed, gameserver["role_id"], status, gameserver_details)
 
     if availability_status == 'available':
         colour = discord.Colour(0x7ed321)
@@ -247,16 +247,16 @@ def parseGameserverPlayers(gameserver_details):
 
 # Formats the message for an individual gameserver and adds it to an existing embed
 # Return: Discord.Embed
-def addRichEmbedField(embed, server_name, status, server_details):
+def addRichEmbedField(embed, role_id, status, server_details):
     players = parseGameserverPlayers(server_details)
     formatted_status = formatGameserverStatus(status)
 
-    formatted_server_message = f'*Status:*  {formatted_status}\n'
+    formatted_server_message = f'<@&{role_id}>\n*Status:*  {formatted_status}\n'
 
     if players != None:
         formatted_server_message += f'*Players:*  {players["current_players"]}/{players["max_players"]}'
 
-    embed.add_field(name='**' + server_name + '**', value=formatted_server_message, inline=True)
+    embed.add_field(name='\u200b', value=formatted_server_message, inline=True)
 
     return embed
 
