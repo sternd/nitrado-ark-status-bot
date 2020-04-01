@@ -156,7 +156,7 @@ def handler(event, context):
             elif status == 'restarting':
                 availability_status = 'restarting'
 
-            embed = addRichEmbedField(embed, gameserver["role_id"], status, gameserver_details)
+            embed = addRichEmbedField(embed, gameserver, status, gameserver_details)
 
     if availability_status == 'available':
         colour = discord.Colour(0x7ed321)
@@ -247,11 +247,18 @@ def parseGameserverPlayers(gameserver_details):
 
 # Formats the message for an individual gameserver and adds it to an existing embed
 # Return: Discord.Embed
-def addRichEmbedField(embed, role_id, status, server_details):
+def addRichEmbedField(embed, gameserver, status, server_details):
+    role_id = gameserver['role_id']
+    gameserver_name = gameserver['gameserver_name']
     players = parseGameserverPlayers(server_details)
     formatted_status = formatGameserverStatus(status)
 
-    formatted_server_message = f'<@&{role_id}>\n*Status:*  {formatted_status}\n'
+    if role_id == "":
+        gameserver_identifier = f'{gameserver_name}\n'
+    else:
+        gameserver_identifier = f'<@&{role_id}>\n'
+
+    formatted_server_message = f'{gameserver_identifier}*Status:*  {formatted_status}\n'
 
     if players != None:
         formatted_server_message += f'*Players:*  {players["current_players"]}/{players["max_players"]}'
