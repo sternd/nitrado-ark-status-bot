@@ -125,9 +125,9 @@ def handler(event, context):
 
     nitrapi_config = json.loads(NITRAPI_ACCOUNT_CONFIG)
 
-    embed = discord.Embed(title="Valkyrie Server Status", colour=discord.Colour(0xf8e71c),
+    embed = discord.Embed(title="Aftermath Server Status", colour=discord.Colour(0xf8e71c),
                           url="https://github.com/sternd/nitrado-ark-status-bot",
-                          description="A visualization of the availability status for Valkyrie's Ark Nitrado servers. The status of all servers will be updated every minute.")
+                          description="A visualization of the availability status for Aftermath's Ark Nitrado servers. The status of all servers will be updated every minute.")
 
     server_icon = os.getenv('SERVER_ICON')
 
